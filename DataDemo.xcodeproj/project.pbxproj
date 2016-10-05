@@ -13,6 +13,10 @@
 		4D43E2521DA4F9A4009D6E5D /* DataDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D43E2501DA4F9A4009D6E5D /* DataDemo.xcdatamodeld */; };
 		4D43E2541DA4F9A4009D6E5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D43E2531DA4F9A4009D6E5D /* Assets.xcassets */; };
 		4D43E2571DA4F9A4009D6E5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D43E2551DA4F9A4009D6E5D /* LaunchScreen.storyboard */; };
+		4D43E2601DA4FBF1009D6E5D /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43E25E1DA4FBF1009D6E5D /* Todo+CoreDataClass.swift */; };
+		4D43E2611DA4FBF1009D6E5D /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43E25F1DA4FBF1009D6E5D /* Todo+CoreDataProperties.swift */; };
+		4D43E2631DA501B2009D6E5D /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43E2621DA501B2009D6E5D /* TodoTableViewController.swift */; };
+		4D43E2651DA50245009D6E5D /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43E2641DA50245009D6E5D /* AddTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		4D43E2531DA4F9A4009D6E5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D43E2561DA4F9A4009D6E5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D43E2581DA4F9A4009D6E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D43E25E1DA4FBF1009D6E5D /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4D43E25F1DA4FBF1009D6E5D /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4D43E2621DA501B2009D6E5D /* TodoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
+		4D43E2641DA50245009D6E5D /* AddTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +48,8 @@
 		4D43E23D1DA4F9A3009D6E5D = {
 			isa = PBXGroup;
 			children = (
+				4D43E25E1DA4FBF1009D6E5D /* Todo+CoreDataClass.swift */,
+				4D43E25F1DA4FBF1009D6E5D /* Todo+CoreDataProperties.swift */,
 				4D43E2481DA4F9A4009D6E5D /* DataDemo */,
 				4D43E2471DA4F9A4009D6E5D /* Products */,
 			);
@@ -59,10 +69,12 @@
 				4D43E2491DA4F9A4009D6E5D /* AppDelegate.swift */,
 				4D43E24B1DA4F9A4009D6E5D /* ViewController.swift */,
 				4D43E24D1DA4F9A4009D6E5D /* Main.storyboard */,
+				4D43E2621DA501B2009D6E5D /* TodoTableViewController.swift */,
 				4D43E2531DA4F9A4009D6E5D /* Assets.xcassets */,
 				4D43E2551DA4F9A4009D6E5D /* LaunchScreen.storyboard */,
 				4D43E2581DA4F9A4009D6E5D /* Info.plist */,
 				4D43E2501DA4F9A4009D6E5D /* DataDemo.xcdatamodeld */,
+				4D43E2641DA50245009D6E5D /* AddTodoViewController.swift */,
 			);
 			path = DataDemo;
 			sourceTree = "<group>";
@@ -140,8 +152,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D43E24C1DA4F9A4009D6E5D /* ViewController.swift in Sources */,
+				4D43E2651DA50245009D6E5D /* AddTodoViewController.swift in Sources */,
+				4D43E2631DA501B2009D6E5D /* TodoTableViewController.swift in Sources */,
+				4D43E2601DA4FBF1009D6E5D /* Todo+CoreDataClass.swift in Sources */,
 				4D43E24A1DA4F9A4009D6E5D /* AppDelegate.swift in Sources */,
 				4D43E2521DA4F9A4009D6E5D /* DataDemo.xcdatamodeld in Sources */,
+				4D43E2611DA4FBF1009D6E5D /* Todo+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +319,7 @@
 				4D43E25D1DA4F9A4009D6E5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
