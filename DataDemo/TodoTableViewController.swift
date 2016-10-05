@@ -20,7 +20,7 @@ class TodoTableViewController: UITableViewController {
         
         context = del.persistentContainer.viewContext
 
-  
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
            }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,17 +30,23 @@ class TodoTableViewController: UITableViewController {
     }
     func fetchTodos(){
         let request: NSFetchRequest<Todo> = Todo.fetchRequest()
-        context.perform {
-            do{
-                self.todos = try request.execute()
-                self.tableView.reloadData()
-            }catch let error {
-                print(error)
-            }
-
+        
+        let sort = NSSortDescriptor(key: "createdAt", ascending: false)
+        request.sortDescriptors = [sort]
+        
+        let asyncRequest = NSAsynchronousFetchRequest<Todo>(fetchRequest: request) { (result) in
+            self.todos = result.finalResult ?? []  // verkort versie van een if else
+            self.tableView.reloadData()
         }
         
-    }
+        do {
+            try context.execute(asyncRequest)
+        }catch let error{
+            print(error)
+        }
+        }
+        
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,10 +68,29 @@ class TodoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
+        
         let todo = todos[indexPath.row]
         cell.textLabel?.text = todo.title
+        
+        if todo.done{
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let todo = todos[indexPath.row]
+        todo.done = !todo.done
+        do{
+            try context.save()
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.deselectRow(at: indexPath, animated: true)
+            }catch let error{
+            print(error)
+        }
     }
     
 
@@ -77,17 +102,24 @@ class TodoTableViewController: UITableViewController {
     }
     */
 
-    /*
+   
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            let todo = todos.remove(at: indexPath.row)
+            context.delete(todo)
+            do {
+                try context.save()
+            } catch let error {
+                print(error)
+            }
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
