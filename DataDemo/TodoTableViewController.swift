@@ -20,12 +20,8 @@ class TodoTableViewController: UITableViewController {
         
         context = del.persistentContainer.viewContext
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+  
+           }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -34,11 +30,14 @@ class TodoTableViewController: UITableViewController {
     }
     func fetchTodos(){
         let request: NSFetchRequest<Todo> = Todo.fetchRequest()
-        do{
-            todos = try request.execute()
-            tableView.reloadData()
-        }catch let error {
-            print(error)
+        context.perform {
+            do{
+                self.todos = try request.execute()
+                self.tableView.reloadData()
+            }catch let error {
+                print(error)
+            }
+
         }
         
     }
